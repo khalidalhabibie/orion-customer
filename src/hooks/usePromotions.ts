@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchPromotions } from "../api/promotions";
+import { USE_MOCK_PROMOTIONS } from "../config/features";
+import { mockPromotionsByPlacement } from "../data/mockPromotions";
 import type { Promotion, PromotionPlacement } from "../types/promotion";
 
 type UsePromotionsResult = {
@@ -17,7 +19,7 @@ export function usePromotions(placement: PromotionPlacement, limit?: number): Us
     async function loadPromotions() {
       try {
         setIsLoading(true);
-        const data = await fetchPromotions(placement, controller.signal);
+        const data = USE_MOCK_PROMOTIONS ? mockPromotionsByPlacement[placement] : await fetchPromotions(placement, controller.signal);
         setPromotions(typeof limit === "number" ? data.slice(0, limit) : data);
       } catch (error) {
         if (!controller.signal.aborted) {

@@ -1,4 +1,5 @@
 import type { Promotion, PromotionPlacement } from "../types/promotion";
+import { USE_MOCK_PROMOTIONS } from "../config/features";
 
 type RawPromotion = Promotion & {
   image_url?: string;
@@ -46,6 +47,10 @@ export function trackPromotionClick(id: string) {
 }
 
 async function postPromotionEvent(id: string, eventName: "impression" | "click") {
+  if (USE_MOCK_PROMOTIONS) {
+    return;
+  }
+
   const url = `/api/customer/promotions/${id}/${eventName}`;
 
   if (navigator.sendBeacon) {
