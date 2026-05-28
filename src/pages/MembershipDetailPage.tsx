@@ -33,7 +33,7 @@ export function MembershipDetailPage({ memberships, onRedeemReward }: Membership
     membership.status === "ACTIVE" && !isComplete ? "Collect more stamps to unlock this reward." : null;
 
   return (
-    <main className="page detail-page">
+    <main className="page detail-page app-page">
       <Link className="text-link" to="/memberships">
         Back to memberships
       </Link>

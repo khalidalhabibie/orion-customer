@@ -27,7 +27,7 @@ export function VoucherListPage({ vouchers }: VoucherListPageProps) {
   }, [activeFilter, vouchers]);
 
   return (
-    <main className="page vouchers-page">
+    <main className="page vouchers-page app-page">
       <section className="page-heading">
         <p className="eyebrow">Voucher wallet</p>
         <h1>My Vouchers</h1>
@@ -48,11 +48,18 @@ export function VoucherListPage({ vouchers }: VoucherListPageProps) {
         ))}
       </div>
 
-      <section className="voucher-grid" aria-label="Voucher list">
-        {visibleVouchers.map((voucher) => (
-          <VoucherCard voucher={voucher} key={voucher.id} />
-        ))}
-      </section>
+      {visibleVouchers.length > 0 ? (
+        <section className="voucher-grid" aria-label="Voucher list">
+          {visibleVouchers.map((voucher) => (
+            <VoucherCard voucher={voucher} key={voucher.id} />
+          ))}
+        </section>
+      ) : (
+        <section className="empty-panel" aria-label="No vouchers">
+          <h2>No vouchers</h2>
+          <p>Available vouchers from participating tenants will appear here.</p>
+        </section>
+      )}
     </main>
   );
 }

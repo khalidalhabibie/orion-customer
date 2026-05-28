@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import { Navbar } from "./components/Navbar";
+import { BottomNavigation } from "./components/BottomNavigation";
 import { USE_MOCK_DATA } from "./config/features";
 import { mockMemberships } from "./data/mockMemberships";
 import { mockVouchers } from "./data/mockVouchers";
@@ -9,6 +9,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { MembershipDetailPage } from "./pages/MembershipDetailPage";
 import { MembershipListPage } from "./pages/MembershipListPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
+import { ProfilePage } from "./pages/ProfilePage";
 import { VoucherDetailPage } from "./pages/VoucherDetailPage";
 import { VoucherListPage } from "./pages/VoucherListPage";
 import { WalletPage } from "./pages/WalletPage";
@@ -17,7 +18,7 @@ export default function App() {
   const [vouchers, setVouchers] = useState(USE_MOCK_DATA ? mockVouchers : []);
   const [memberships, setMemberships] = useState(USE_MOCK_DATA ? mockMemberships : []);
   const location = useLocation();
-  const showNavbar = location.pathname !== "/";
+  const showBottomNavigation = !["/", "/login"].includes(location.pathname);
 
   function handleRedeemVoucher(id: string) {
     setVouchers((currentVouchers) =>
@@ -35,7 +36,6 @@ export default function App() {
 
   return (
     <>
-      {showNavbar ? <Navbar /> : null}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -50,8 +50,10 @@ export default function App() {
           path="/memberships/:id"
           element={<MembershipDetailPage memberships={memberships} onRedeemReward={handleRedeemReward} />}
         />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      {showBottomNavigation ? <BottomNavigation /> : null}
     </>
   );
 }

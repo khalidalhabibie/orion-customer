@@ -29,7 +29,7 @@ export function VoucherDetailPage({ vouchers, onRedeemVoucher }: VoucherDetailPa
   const canRedeem = voucher.status === "AVAILABLE";
 
   return (
-    <main className="page detail-page">
+    <main className="page detail-page app-page">
       <Link className="text-link" to="/vouchers">
         Back to vouchers
       </Link>
