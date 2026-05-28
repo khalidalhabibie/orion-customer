@@ -1,0 +1,68 @@
+import type { Membership } from "../types/membership";
+
+export const mockMemberships: Membership[] = [
+  {
+    id: "kopi-senja-stamp-card",
+    tenantName: "Kopi Senja",
+    programName: "Morning Coffee Club",
+    description: "Collect a stamp for every morning coffee purchase at Kopi Senja.",
+    currentStamps: 7,
+    requiredStamps: 10,
+    rewardName: "Free 1 Coffee",
+    terms: [
+      "One stamp per eligible coffee purchase.",
+      "Reward can be redeemed after all stamps are collected.",
+      "Reward is valid for regular-sized coffee only.",
+    ],
+    expiryDate: "2026-12-31",
+    status: "ACTIVE",
+  },
+  {
+    id: "warung-nusantara-stamp-card",
+    tenantName: "Warung Nusantara",
+    programName: "Lunch Loyalty Card",
+    description: "Collect lunch stamps and unlock a free lunch package.",
+    currentStamps: 10,
+    requiredStamps: 10,
+    rewardName: "Free Lunch Package",
+    terms: [
+      "One stamp per lunch package purchase.",
+      "Reward must be redeemed in store.",
+      "Cannot be exchanged for cash.",
+    ],
+    expiryDate: "2026-10-15",
+    status: "REWARD_READY",
+  },
+  {
+    id: "cleanmate-laundry-stamp-card",
+    tenantName: "CleanMate Laundry",
+    programName: "Laundry Loyalty",
+    description: "Earn stamps from regular laundry orders and redeem a free laundry reward.",
+    currentStamps: 4,
+    requiredStamps: 8,
+    rewardName: "Free 2kg Laundry",
+    terms: [
+      "One stamp per completed laundry order.",
+      "Express laundry orders are excluded.",
+      "Reward covers regular wash and fold service.",
+    ],
+    expiryDate: "2026-11-30",
+    status: "ACTIVE",
+  },
+  {
+    id: "fitspace-stamp-card",
+    tenantName: "FitSpace",
+    programName: "Gym Visit Rewards",
+    description: "Collect visit stamps and earn free access for one week.",
+    currentStamps: 12,
+    requiredStamps: 12,
+    rewardName: "Free 1 Week Access",
+    terms: [
+      "One stamp per gym visit per day.",
+      "Reward cannot be transferred.",
+      "Valid for standard gym access only.",
+    ],
+    expiryDate: "2026-09-30",
+    status: "COMPLETED",
+  },
+];
