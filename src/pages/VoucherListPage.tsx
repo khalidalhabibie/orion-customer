@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { PromotionSection } from "../components/PromotionSection";
 import { VoucherCard } from "../components/VoucherCard";
 import type { Voucher, VoucherStatus } from "../types/voucher";
 
@@ -32,6 +33,8 @@ export function VoucherListPage({ vouchers }: VoucherListPageProps) {
         <p className="eyebrow">Voucher wallet</p>
         <h1>My Vouchers</h1>
       </section>
+
+      <PromotionSection title="Featured Rewards" placement="CUSTOMER_REWARDS" limit={6} />
 
       <div className="filter-tabs" role="tablist" aria-label="Filter vouchers by status">
         {filters.map((filter) => (

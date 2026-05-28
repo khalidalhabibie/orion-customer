@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { PromotionSection } from "../components/PromotionSection";
 import { StatusBadge } from "../components/StatusBadge";
 import type { Membership } from "../types/membership";
 import type { Voucher } from "../types/voucher";
@@ -71,6 +72,15 @@ export function WalletPage({ vouchers, memberships }: WalletPageProps) {
           Scan QR
         </Link>
       </section>
+
+      <PromotionSection title="Featured for You" placement="CUSTOMER_HOME" limit={3} />
+
+      <PromotionSection
+        title="Use your membership at partner offers"
+        placement="CUSTOMER_WALLET"
+        limit={2}
+        variant="subtle"
+      />
 
       <section className="home-section" aria-label="Available rewards">
         <div className="section-title">
